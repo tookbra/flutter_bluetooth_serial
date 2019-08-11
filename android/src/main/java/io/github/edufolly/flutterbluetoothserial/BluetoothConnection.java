@@ -112,14 +112,28 @@ public abstract class BluetoothConnection
 
         /// Thread main code
         public void run() {
-            byte[] buffer = new byte[1024];
-            int bytes;
+            int offset = 0;
+            int pktlength = 0;
+            byte[] buffer = new byte[512];
+            boolean isPkt = false;
 
             while (!requestedClosing) {
                 try {
-                    bytes = input.read(buffer);
-
-                    onRead(Arrays.copyOf(buffer, bytes));
+                    offset += input.read(buffer, offset, 1);
+                    for (int i = 0; i < offset; i++) {
+                        if (buffer[i] == 0x0A) {
+                            pktlength = i;
+                            isPkt = true;
+                            break;
+                        }
+                    }
+                    if(isPkt) {
+                        onRead(Arrays.copyOf(buffer, pktlength));
+                        Arrays.fill(buffer, (byte) 0);
+                        offset = 0;
+                        pktlength = 0;
+                        isPkt = false;
+                    }
                 } catch (IOException e) {
                     // `input.read` throws when closed by remote device
                     break;
