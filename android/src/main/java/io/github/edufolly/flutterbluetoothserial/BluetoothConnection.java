@@ -63,7 +63,7 @@ public abstract class BluetoothConnection
     public void connect(String address) throws IOException {
         connect(address, DEFAULT_UUID);
     }
-    
+
     /// Disconnects current session (ignore if not connected)
     public void disconnect() {
         if (isConnected()) {
@@ -93,7 +93,7 @@ public abstract class BluetoothConnection
         private final InputStream input;
         private final OutputStream output;
         private boolean requestedClosing = false;
-        
+
         ConnectionThread(BluetoothSocket socket) {
             this.socket = socket;
             InputStream tmpIn = null;

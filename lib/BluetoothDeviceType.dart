@@ -4,37 +4,37 @@ class BluetoothDeviceType {
   final int underlyingValue;
   final String stringValue;
 
-  const BluetoothDeviceType.fromString(String string) : 
-    this.underlyingValue = (
-      string == 'unknown' ? 0 :
-      string == 'classic' ? 1 :
-      string == 'le'      ? 2 :
-      string == 'dual'    ? 3 :
+  const BluetoothDeviceType.fromString(String string) :
+        this.underlyingValue = (
+            string == 'unknown' ? 0 :
+            string == 'classic' ? 1 :
+            string == 'le'      ? 2 :
+            string == 'dual'    ? 3 :
 
-      -2 // Unknown, if not found valid
-    ),
-    this.stringValue = (
-      (
-        string == 'unknown' ||
-        string == 'classic' ||
-        string == 'le'      ||
-        string == 'dual'    //
-      )
-        ? string : 'unknown' // Unknown, if not found valid
-    );
+            -2 // Unknown, if not found valid
+        ),
+        this.stringValue = (
+            (
+                string == 'unknown' ||
+                    string == 'classic' ||
+                    string == 'le'      ||
+                    string == 'dual'    //
+            )
+                ? string : 'unknown' // Unknown, if not found valid
+        );
 
   const BluetoothDeviceType.fromUnderlyingValue(int value) :
-    this.underlyingValue = (
-      (value >= 0 && value <= 3) ? value : 0 // Unknown, if not found valid
-    ),
-    this.stringValue = (
-      value == 0 ? 'unknown'  :
-      value == 1 ? 'classic'  :
-      value == 2 ? 'le'       :
-      value == 3 ? 'dual'     :
-      
-      'unknown' // Unknown, if not found valid
-    );
+        this.underlyingValue = (
+            (value >= 0 && value <= 3) ? value : 0 // Unknown, if not found valid
+        ),
+        this.stringValue = (
+            value == 0 ? 'unknown'  :
+            value == 1 ? 'classic'  :
+            value == 2 ? 'le'       :
+            value == 3 ? 'dual'     :
+
+            'unknown' // Unknown, if not found valid
+        );
 
   String toString() => 'BluetoothDeviceType.$stringValue';
 

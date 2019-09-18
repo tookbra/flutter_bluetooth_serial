@@ -2,8 +2,9 @@ group 'io.github.edufolly.flutterbluetoothserial'
 version '1.0-SNAPSHOT'
 buildscript {
     repositories {
-        google()
-        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
     }
 
     dependencies {
@@ -12,17 +13,14 @@ buildscript {
 }
 rootProject.allprojects {
     repositories {
-        google()
-        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
     }
 }
 apply plugin: 'com.android.library'
 android {
     compileSdkVersion 28
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     defaultConfig {
         minSdkVersion 18
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -37,4 +35,5 @@ android {
 }
 
 dependencies {
+    compileOnly files('libs/flutter.jar')
 }

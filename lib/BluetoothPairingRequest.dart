@@ -45,12 +45,12 @@ class PairingVariant {
   static const OOB                  = PairingVariant._(6);
   static const Pin16Digits          = PairingVariant._(7);
 
-  // operator ==(Object other) {
-  //   return other is PairingVariant && other.underlyingValue == this.underlyingValue;
-  // }
+// operator ==(Object other) {
+//   return other is PairingVariant && other.underlyingValue == this.underlyingValue;
+// }
 
-  // @override
-  // int get hashCode => underlyingValue.hashCode;
+// @override
+// int get hashCode => underlyingValue.hashCode;
 }
 
 /// Represents information about incoming pairing request
@@ -66,7 +66,7 @@ class BluetoothPairingRequest {
 
   /// Construct `BluetoothPairingRequest` with given values.
   const BluetoothPairingRequest({
-    this.address, 
+    this.address,
     this.pairingVariant,
     this.passkey,
   });

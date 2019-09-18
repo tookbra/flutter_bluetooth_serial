@@ -8,7 +8,7 @@ class FlutterBluetoothSerial {
   static FlutterBluetoothSerial get instance => _instance;
 
   static final MethodChannel _methodChannel = const MethodChannel('$namespace/methods');
-  
+
   FlutterBluetoothSerial._() {
     _methodChannel.setMethodCallHandler((MethodCall call) {
       switch (call.method) {
@@ -34,7 +34,7 @@ class FlutterBluetoothSerial {
 
   /// Describes is the Bluetooth interface enabled on host device.
   Future<bool> get isEnabled async => await _methodChannel.invokeMethod('isEnabled');
-  
+
   /// Checks is the Bluetooth interface enabled on host device.
   @Deprecated('Use `isEnabled` instead')
   Future<bool> get isOn async => await _methodChannel.invokeMethod('isOn');
@@ -114,7 +114,7 @@ class FlutterBluetoothSerial {
             case PairingVariant.Pin:
               return pin;
             default:
-              // Other pairing variant requested, ignoring pin
+            // Other pairing variant requested, ignoring pin
               break;
           }
         }
@@ -124,7 +124,7 @@ class FlutterBluetoothSerial {
             case PairingVariant.PasskeyConfirmation:
               return passkeyConfirm;
             default:
-              // Other pairing variant requested, ignoring confirming
+            // Other pairing variant requested, ignoring confirming
               break;
           }
         }
@@ -205,10 +205,10 @@ class FlutterBluetoothSerial {
     );
 
     await _methodChannel.invokeMethod('startDiscovery');
-    
+
     subscription = _discoveryChannel.receiveBroadcastStream().listen(
       controller.add,
-      onError: controller.addError, 
+      onError: controller.addError,
       onDone: controller.close,
     );
 
@@ -234,8 +234,8 @@ class FlutterBluetoothSerial {
   BluetoothConnection _defaultConnection;
 
   @Deprecated('Use `BluetoothConnection.isEnabled` instead')
-  Future<bool> get isConnected async => 
-    Future.value(_defaultConnection == null ? false : _defaultConnection.isConnected);
+  Future<bool> get isConnected async =>
+      Future.value(_defaultConnection == null ? false : _defaultConnection.isConnected);
 
   @Deprecated('Use `BluetoothConnection.toAddress(device.address)` instead')
   Future<void> connect(BluetoothDevice device) => connectToAddress(device.address);

@@ -41,9 +41,9 @@ class BluetoothConnection {
 
 
   BluetoothConnection._consumeConnectionID(int id)
-  : 
-    this._id = id,
-    this._readChannel = EventChannel('${FlutterBluetoothSerial.namespace}/read/$id')
+      :
+        this._id = id,
+        this._readChannel = EventChannel('${FlutterBluetoothSerial.namespace}/read/$id')
   {
     _readStreamController = StreamController<Uint8List>();
 
@@ -61,7 +61,7 @@ class BluetoothConnection {
   static Future<BluetoothConnection> toAddress(String address) async {
     // Sorry for pseudo-factory, but `factory` keyword disallows `Future`.
     return BluetoothConnection._consumeConnectionID(
-      await FlutterBluetoothSerial._methodChannel.invokeMethod('connect', {"address": address})
+        await FlutterBluetoothSerial._methodChannel.invokeMethod('connect', {"address": address})
     );
   }
 
@@ -77,9 +77,9 @@ class BluetoothConnection {
     return Future.wait([
       output.close(),
       _readStreamSubscription.cancel(),
-      (!_readStreamController.isClosed) 
-        ? _readStreamController.close()
-        : Future.value(/* Empty future */)
+      (!_readStreamController.isClosed)
+          ? _readStreamController.close()
+          : Future.value(/* Empty future */)
     ], eagerError: true);
   }
 

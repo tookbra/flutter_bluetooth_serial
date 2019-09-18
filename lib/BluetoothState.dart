@@ -4,59 +4,59 @@ class BluetoothState {
   final int underlyingValue;
   final String stringValue;
 
-  const BluetoothState.fromString(String string) : 
-    this.underlyingValue = (
-      string == 'STATE_OFF'         ? 10 :
-      string == 'STATE_TURNING_ON'  ? 11 :
-      string == 'STATE_ON'          ? 12 :
-      string == 'STATE_TURNING_OFF' ? 13 :
+  const BluetoothState.fromString(String string) :
+        this.underlyingValue = (
+            string == 'STATE_OFF'         ? 10 :
+            string == 'STATE_TURNING_ON'  ? 11 :
+            string == 'STATE_ON'          ? 12 :
+            string == 'STATE_TURNING_OFF' ? 13 :
 
-      //ring == 'STATE_BLE_OFF'         ? 10 :
-      string == 'STATE_BLE_TURNING_ON'  ? 14 :
-      string == 'STATE_BLE_ON'          ? 15 :
-      string == 'STATE_BLE_TURNING_OFF' ? 16 :
+            //ring == 'STATE_BLE_OFF'         ? 10 :
+            string == 'STATE_BLE_TURNING_ON'  ? 14 :
+            string == 'STATE_BLE_ON'          ? 15 :
+            string == 'STATE_BLE_TURNING_OFF' ? 16 :
 
-      string == 'ERROR'   ? -1 :
+            string == 'ERROR'   ? -1 :
 
-      -2 // Unknown, if not found valid
-    ),
-    this.stringValue = (
-      (
-        string == 'STATE_OFF'         ||
-        string == 'STATE_TURNING_ON'  ||
-        string == 'STATE_ON'          ||
-        string == 'STATE_TURNING_OFF' ||
+            -2 // Unknown, if not found valid
+        ),
+        this.stringValue = (
+            (
+                string == 'STATE_OFF'         ||
+                    string == 'STATE_TURNING_ON'  ||
+                    string == 'STATE_ON'          ||
+                    string == 'STATE_TURNING_OFF' ||
 
-        //ring == 'STATE_BLE_OFF'         ||
-        string == 'STATE_BLE_TURNING_ON'  ||
-        string == 'STATE_BLE_ON'          ||
-        string == 'STATE_BLE_TURNING_OFF' ||
+                    //ring == 'STATE_BLE_OFF'         ||
+                    string == 'STATE_BLE_TURNING_ON'  ||
+                    string == 'STATE_BLE_ON'          ||
+                    string == 'STATE_BLE_TURNING_OFF' ||
 
-        string == 'ERROR'
-      )
-        ? string : 'UNKNOWN' // Unknown, if not found valid
-    );
+                    string == 'ERROR'
+            )
+                ? string : 'UNKNOWN' // Unknown, if not found valid
+        );
 
   const BluetoothState.fromUnderlyingValue(int value) :
-    this.underlyingValue = (
-      ((value >= 10 && value <= 16) || value == -1)
-        ? value : -2 // Unknown, if not found valid
-    ),
-    this.stringValue = (
-      value == 10 ? 'STATE_OFF'         :
-      value == 11 ? 'STATE_TURNING_ON'  :
-      value == 12 ? 'STATE_ON'          :
-      value == 13 ? 'STATE_TURNING_OFF' :
+        this.underlyingValue = (
+            ((value >= 10 && value <= 16) || value == -1)
+                ? value : -2 // Unknown, if not found valid
+        ),
+        this.stringValue = (
+            value == 10 ? 'STATE_OFF'         :
+            value == 11 ? 'STATE_TURNING_ON'  :
+            value == 12 ? 'STATE_ON'          :
+            value == 13 ? 'STATE_TURNING_OFF' :
 
-      //lue == 10 ? 'STATE_BLE_OFF'         : // Just for symetry in code :F
-      value == 14 ? 'STATE_BLE_TURNING_ON'  :
-      value == 15 ? 'STATE_BLE_ON'          :
-      value == 16 ? 'STATE_BLE_TURNING_OFF' :
+            //lue == 10 ? 'STATE_BLE_OFF'         : // Just for symetry in code :F
+            value == 14 ? 'STATE_BLE_TURNING_ON'  :
+            value == 15 ? 'STATE_BLE_ON'          :
+            value == 16 ? 'STATE_BLE_TURNING_OFF' :
 
-      value == -1 ? 'ERROR' :
-      
-      'UNKNOWN' // Unknown, if not found valid
-    );
+            value == -1 ? 'ERROR' :
+
+            'UNKNOWN' // Unknown, if not found valid
+        );
 
   String toString() => 'BluetoothState.$stringValue';
 
